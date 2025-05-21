@@ -9,117 +9,51 @@
   <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/babel-standalone@6.26.0/babel.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/framer-motion@11.11.9/dist/framer-motion.js"></script>
 </head>
 <body>
   <div id="root"></div>
   <script type="text/babel">
-    const { motion } = window.framerMotion; // Correctly access Framer Motion from global scope
-
     const Header = () => (
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm text-white shadow-md z-50"
-      >
+      <header className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm text-white shadow-md z-50 animate-slide-in-top">
         <nav className="container mx-auto flex justify-between items-center py-4 px-6">
           <h1 className="text-2xl font-semibold tracking-tight font-figtree">Nikky Alesandro</h1>
           <ul className="flex space-x-8 font-figtree text-sm font-medium">
-            {['Home', 'About', 'Projects', 'Contact'].map((item, index) => (
-              <motion.li
-                key={item}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <a href={`#${item.toLowerCase()}`} className="hover:text-gray-300 transition-colors duration-300">
-                  {item}
-                </a>
-              </motion.li>
-            ))}
+            <li><a href="#home" className="hover:text-gray-300 transition-colors duration-300">Home</a></li>
+            <li><a href="#about" className="hover:text-gray-300 transition-colors duration-300">About</a></li>
+            <li><a href="#projects" className="hover:text-gray-300 transition-colors duration-300">Projects</a></li>
+            <li><a href="#contact" className="hover:text-gray-300 transition-colors duration-300">Contact</a></li>
           </ul>
         </nav>
-      </motion.header>
+      </header>
     );
 
     const Hero = () => (
-      <motion.section
-        id="home"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-indigo-900 text-white relative overflow-hidden"
-      >
+      <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-indigo-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://source.unsplash.com/random/1920x1080?abstract')] bg-cover bg-center opacity-20" />
         <div className="container mx-auto text-center px-6 relative z-10">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-semibold font-figtree mb-4"
-          >
-            Nikky Alesandro
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl font-figtree font-medium mb-8"
-          >
-            Full Stack Engineer
-          </motion.p>
-          <motion.a
+          <h1 className="text-5xl md:text-7xl font-semibold font-figtree mb-4 animate-fade-in">Nikky Alesandro</h1>
+          <p className="text-xl md:text-2xl font-figtree font-medium mb-8 animate-fade-in delay-200">Full Stack Engineer</p>
+          <a
             href="#projects"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="inline-block bg-indigo-600 text-white py-3 px-8 rounded-full font-medium font-figtree hover:bg-indigo-500 transition-colors duration-300"
+            className="inline-block bg-indigo-600 text-white py-3 px-8 rounded-full font-medium font-figtree hover:bg-indigo-500 transition-colors duration-300 animate-fade-in delay-400"
           >
             View My Work
-          </motion.a>
+          </a>
         </div>
-      </motion.section>
+      </section>
     );
 
     const About = () => (
-      <motion.section
-        id="about"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-24 bg-gray-50"
-      >
+      <section id="about" className="py-24 bg-gray-50">
         <div className="container mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-4xl font-semibold text-center font-figtree mb-12 text-gray-800"
-          >
-            About Me
-          </motion.h2>
+          <h2 className="text-4xl font-semibold text-center font-figtree mb-12 text-gray-800 animate-fade-in">About Me</h2>
           <div className="flex flex-col md:flex-row items-center gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="md:w-1/2"
-            >
+            <div className="md:w-1/2 animate-slide-in-left">
               <p className="text-lg text-gray-600 leading-relaxed font-figtree">
                 I'm a dedicated Full Stack Engineer with a passion for crafting elegant, efficient, and user-centric solutions. My expertise spans modern web technologies, enabling me to build seamless digital experiences that combine robust functionality with refined aesthetics.
               </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="md:w-1/2"
-            >
+            </div>
+            <div className="md:w-1/2 animate-slide-in-right">
               <div className="bg-white p-8 rounded-xl shadow-lg">
                 <h3 className="text-2xl font-semibold font-figtree mb-4 text-gray-800">Skills</h3>
                 <ul className="grid grid-cols-2 gap-4 text-gray-600 font-figtree">
@@ -131,59 +65,37 @@
                   <li>JavaScript</li>
                 </ul>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
-      </motion.section>
+      </section>
     );
 
     const Projects = () => (
-      <motion.section
-        id="projects"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-24 bg-white"
-      >
+      <section id="projects" className="py-24 bg-white">
         <div className="container mx-auto px-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-4xl font-semibold text-center font-figtree mb-12 text-gray-800"
-          >
-            My Projects
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h2 className="text-4xl font-semibold text-center font-figtree mb-12 text-gray-800 animate-fade-in">My Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: "E-Commerce & Company Profile",
                 desc: "A modern e-commerce platform with seamless user experience and secure payment integration.",
-                img: "https://source.unsplash.com/random/600x400?ecommerce",
+                img: "project1.png",
                 link: "https://sinarbintangwibawa.co.id/"
               },
               {
                 title: "National Student Olympiad",
                 desc: "A dynamic dashboard for real-time data visualization and analytics.",
-                img: "https://source.unsplash.com/random/600x400?dashboard",
+                img: "project2.png",
                 link: "https://bec.technopedie.com/"
-              },
+              },,
             ].map((project, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="relative bg-gray-50 rounded-xl shadow-lg overflow-hidden group"
+                className="relative bg-gray-50 rounded-xl shadow-lg overflow-hidden group animate-fade-in"
+                style={{ animationDelay: `${index * 200}ms` }}
               >
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+                <img src={project.img} alt={project.title} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-6 text-white">
                     <h3 className="text-xl font-semibold font-figtree mb-2">{project.title}</h3>
@@ -191,48 +103,19 @@
                     <a href={project.link} className="text-indigo-400 hover:underline font-figtree">View Project</a>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
     );
 
     const Contact = () => (
-      <motion.section
-        id="contact"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="py-24 bg-gray-900 text-white"
-      >
+      <section id="contact" className="py-24 bg-gray-900 text-white">
         <div className="container mx-auto px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-4xl font-semibold font-figtree mb-12"
-          >
-            Get in Touch
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-lg font-figtree mb-8"
-          >
-            Interested in collaborating? Drop me a message!
-          </motion.p>
-          <motion.form
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="max-w-lg mx-auto space-y-6"
-          >
+          <h2 className="text-4xl font-semibold font-figtree mb-12 animate-fade-in">Get in Touch</h2>
+          <p className="text-lg font-figtree mb-8 animate-fade-in delay-200">Interested in collaborating? Drop me a message!</p>
+          <form className="max-w-lg mx-auto space-y-6 animate-fade-in delay-400">
             <input
               type="text"
               placeholder="Your Name"
@@ -248,41 +131,27 @@
               className="w-full p-4 rounded-lg bg-gray-800 text-white font-figtree focus:outline-none focus:ring-2 focus:ring-indigo-500"
               rows="4"
             ></textarea>
-            <motion.button
+            <button
               type="submit"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               className="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium font-figtree hover:bg-indigo-500 transition-colors duration-300"
             >
               Send Message
-            </motion.button>
-          </motion.form>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
-            className="flex justify-center gap-4 mt-8"
-          >
+            </button>
+          </form>
+          <div className="flex justify-center gap-4 mt-8 animate-fade-in delay-600">
             <a href="mailto:nikky.alesandro@email.com" className="text-indigo-400 hover:text-indigo-300 font-figtree transition-colors duration-300">Email</a>
             <a href="https://www.linkedin.com/in/nikandro/" className="text-indigo-400 hover:text-indigo-300 font-figtree transition-colors duration-300">LinkedIn</a>
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
     );
 
     const Footer = () => (
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="bg-gray-800 text-white py-6"
-      >
+      <footer className="bg-gray-800 text-white py-6 animate-fade-in">
         <div className="container mx-auto text-center font-figtree">
           <p>© 2025 Nikky Alesandro. All rights reserved.</p>
         </div>
-      </motion.footer>
+      </footer>
     );
 
     const App = () => (
@@ -301,6 +170,37 @@
   </script>
 
   <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInTop {
+      from { opacity: 0; transform: translateY(-100px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-in-out forwards;
+    }
+    .animate-slide-in-top {
+      animation: slideInTop 0.5s ease-in-out forwards;
+    }
+    .animate-slide-in-left {
+      animation: slideInLeft 0.6s ease-in-out forwards;
+    }
+    .animate-slide-in-right {
+      animation: slideInRight 0.6s ease-in-out forwards;
+    }
+    .delay-200 { animation-delay: 200ms; }
+    .delay-400 { animation-delay: 400ms; }
+    .delay-600 { animation-delay: 600ms; }
     body {
       font-family: 'Figtree', sans-serif;
     }
