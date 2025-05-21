@@ -805,7 +805,7 @@
 
         const handleSubmit = async (e) => {
           e.preventDefault();
-      
+        
           try {
             const response = await fetch("https://formspree.io/f/mnndyale", {
               method: "POST",
@@ -814,15 +814,19 @@
               },
               body: JSON.stringify(formData),
             });
-      
-            const result = await response.text();
-            alert(result);
-      
-            setFormData({
-              name: "",
-              email: "",
-              message: "",
-            });
+        
+            const result = await response.json();
+        
+            if (response.ok) {
+              alert("Pesan berhasil dikirim!");
+              setFormData({
+                name: "",
+                email: "",
+                message: "",
+              });
+            } else {
+              alert("Gagal mengirim pesan: " + (result.error || "Coba lagi nanti."));
+            }
           } catch (error) {
             alert("Terjadi kesalahan saat mengirim pesan.");
           }
