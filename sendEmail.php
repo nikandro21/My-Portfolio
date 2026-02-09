@@ -1,5 +1,4 @@
 <?php
-// Mengatur header untuk menerima JSON
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
@@ -11,7 +10,7 @@ if (isset($data['name'], $data['email'], $data['message'])) {
     $email = htmlspecialchars($data['email']);
     $message = htmlspecialchars($data['message']);
 
-    $to = "nikky.alesandro@gmail.com"; // Ganti dengan email kamu
+    $to = "nikky.alesandro@gmail.com";
     $subject = "Pesan dari $name";
     $body = "Nama: $name\nEmail: $email\n\nPesan:\n$message";
     $headers = "From: $email";
